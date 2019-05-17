@@ -1,1 +1,0 @@
-__description__ = 'Else Data Access Manager Module'
