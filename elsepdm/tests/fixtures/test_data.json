@@ -1,0 +1,163 @@
+{
+  "config": {
+    "components": [
+      {
+        "name": "upper",
+        "component": "1",
+        "structures": [
+          {
+            "name": "upper",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "body",
+                "element": "1",
+                "active_color": "mat_shoemaster_boxgrain",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "butterfly",
+        "component": "2",
+        "structures": [
+          {
+            "name": "butterfly",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "butterfly",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "star",
+        "component": "3",
+        "structures": [
+          {
+            "name": "star",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "star",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "studs",
+        "component": "4",
+        "structures": [
+          {
+            "name": "studs",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "studs",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "bee",
+        "component": "5",
+        "structures": [
+          {
+            "name": "bee",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "bee",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "snail",
+        "component": "6",
+        "structures": [
+          {
+            "name": "snail",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "snail",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "applique",
+        "component": "7",
+        "structures": [
+          {
+            "name": "application",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "application",
+                "element": "1",
+                "active_color": "mat_monton_CECECE",
+                "active_material": "boxgrain"
+              },
+              {
+                "path": "application",
+                "element": "2",
+                "active_color": "mat_patent_red",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "flower",
+        "component": "8",
+        "structures": [
+          {
+            "name": "flower",
+            "structure": "1",
+            "elements": [
+              {
+                "path": "flower",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "active_material": "boxgrain"
+              },
+              {
+                "path": "flower_inside",
+                "element": "2",
+                "active_color": "mat_laminate_CF3423",
+                "active_material": "boxgrain"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "product": "1_2"
+}

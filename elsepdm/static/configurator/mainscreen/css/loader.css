@@ -1,0 +1,43 @@
+#loader{
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: RGBA(0,0,0,0.6);
+}
+#loader .img{
+    background-image: url("../img/loader.gif");
+    background-position: center;
+    background-size: 150px;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+
+#order-success-push{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 99999999;
+    color: #939598;
+    background-color: white;
+    text-align: center;
+    border: 1px solid black;
+    padding: 75px 20px;
+    width: 325px;
+    height: 200px;
+    font-size: 22px;
+    box-shadow: #939598 0 0 20px;
+    span{
+        position: absolute;
+        top: 6px;
+        right: 10px;
+        color: black;
+    }
+}

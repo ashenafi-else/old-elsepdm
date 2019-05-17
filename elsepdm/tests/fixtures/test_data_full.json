@@ -1,0 +1,391 @@
+{
+  "config": {
+    "components": [
+      {
+        "name": "upper",
+        "order": "1",
+        "visible": true,
+        "optional": false,
+        "component": "1",
+        "structures": [
+          {
+            "name": "upper",
+            "elements": [
+              {
+                "name": "body",
+                "path": "body",
+                "element": "1",
+                "active_color": "mat_shoemaster_boxgrain",
+                "configurable": true,
+                "active_material": "shoemaster_boxgrain"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "butterfly",
+        "order": "2",
+        "visible": true,
+        "optional": false,
+        "component": "2",
+        "structures": [
+          {
+            "name": "butterfly",
+            "elements": [
+              {
+                "name": "butterfly",
+                "path": "butterfly",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "star",
+        "order": "3",
+        "visible": true,
+        "optional": false,
+        "component": "3",
+        "structures": [
+          {
+            "name": "star",
+            "elements": [
+              {
+                "name": "star",
+                "path": "star",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "studs",
+        "order": "4",
+        "visible": true,
+        "optional": false,
+        "component": "4",
+        "structures": [
+          {
+            "name": "studs",
+            "elements": [
+              {
+                "name": "studs",
+                "path": "studs",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "bee",
+        "order": "5",
+        "visible": true,
+        "optional": false,
+        "component": "5",
+        "structures": [
+          {
+            "name": "bee",
+            "elements": [
+              {
+                "name": "bee",
+                "path": "bee",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "snail",
+        "order": "6",
+        "visible": true,
+        "optional": false,
+        "component": "6",
+        "structures": [
+          {
+            "name": "snail",
+            "elements": [
+              {
+                "name": "snail",
+                "path": "snail",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "applique",
+        "order": "7",
+        "visible": true,
+        "optional": false,
+        "component": "7",
+        "structures": [
+          {
+            "name": "application",
+            "elements": [
+              {
+                "name": "application",
+                "path": "application",
+                "element": "1",
+                "active_color": "mat_monton_CECECE",
+                "configurable": true,
+                "active_material": "monton"
+              },
+              {
+                "name": "application",
+                "path": "application",
+                "element": "2",
+                "active_color": "mat_patent_red",
+                "configurable": true,
+                "active_material": "patent_red"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "flower",
+        "order": "8",
+        "visible": true,
+        "optional": false,
+        "component": "8",
+        "structures": [
+          {
+            "name": "flower",
+            "elements": [
+              {
+                "name": "flower",
+                "path": "flower",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              },
+              {
+                "name": "flower_inside",
+                "path": "flower_inside",
+                "element": "2",
+                "active_color": "mat_laminate_CF3423",
+                "configurable": true,
+                "active_material": "laminate"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "heel",
+        "order": "9",
+        "visible": true,
+        "optional": false,
+        "component": "9",
+        "structures": [
+          {
+            "name": "heel",
+            "elements": [
+              {
+                "name": "heel",
+                "path": "heel",
+                "element": "1",
+                "active_color": "mat_patent_red",
+                "configurable": true,
+                "active_material": "patent_red"
+              },
+              {
+                "name": "heel-cap",
+                "path": "heel-cap",
+                "element": "2",
+                "active_color": "mat_plastic_191919",
+                "configurable": true,
+                "active_material": "plastic"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "outsole",
+        "order": "10",
+        "visible": true,
+        "optional": false,
+        "component": "10",
+        "structures": [
+          {
+            "name": "outsole",
+            "elements": [
+              {
+                "name": "outsole",
+                "path": "outsole",
+                "element": "1",
+                "active_color": "mat_patent_red",
+                "configurable": true,
+                "active_material": "patent_red"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "plateau",
+        "order": "11",
+        "visible": true,
+        "optional": false,
+        "component": "11",
+        "structures": [
+          {
+            "name": "plateau",
+            "elements": [
+              {
+                "name": "plateau",
+                "path": "plateau",
+                "element": "1",
+                "active_color": "mat_patent_blue",
+                "configurable": true,
+                "active_material": "patent_blue"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "lining",
+        "order": "12",
+        "visible": true,
+        "optional": false,
+        "component": "12",
+        "structures": [
+          {
+            "name": "inner",
+            "elements": [
+              {
+                "name": "inner",
+                "path": "inner",
+                "element": "1",
+                "active_color": "mat_monton_CEC4AC",
+                "configurable": true,
+                "active_material": "monton"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "insole",
+        "order": "13",
+        "visible": true,
+        "optional": false,
+        "component": "13",
+        "structures": [
+          {
+            "name": "insole",
+            "elements": [
+              {
+                "name": "insole",
+                "path": "insole",
+                "element": "1",
+                "active_color": "mat_monton_CEC4AC",
+                "configurable": true,
+                "active_material": "monton"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "buttons",
+        "order": "14",
+        "visible": true,
+        "optional": false,
+        "component": "14",
+        "structures": [
+          {
+            "name": "buttons",
+            "elements": [
+              {
+                "name": "buttons",
+                "path": "buttons",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      },
+      {
+        "name": "side-buttons",
+        "order": "15",
+        "visible": true,
+        "optional": false,
+        "component": "15",
+        "structures": [
+          {
+            "name": "side-buttons",
+            "elements": [
+              {
+                "name": "side-buttons",
+                "path": "side-buttons",
+                "element": "1",
+                "active_color": "mat_metal_F5B64C",
+                "configurable": true,
+                "active_material": "metal"
+              }
+            ],
+            "structure": "1"
+          }
+        ],
+        "configurable": true
+      }
+    ]
+  },
+  "product": "1_2"
+}

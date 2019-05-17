@@ -1,0 +1,21 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 204 204" style="enable-background:new 0 0 204 204;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);}
+</style>
+<radialGradient id="SVGID_1_" cx="102" cy="102" r="102" gradientUnits="userSpaceOnUse">
+	<stop  offset="0.8847" style="stop-color:#253B5F"/>
+	<stop  offset="1" style="stop-color:#253B5F;stop-opacity:0"/>
+</radialGradient>
+<path class="st0" d="M102,0C45.7,0,0,45.7,0,102c0,56.3,45.7,102,102,102s102-45.7,102-102C204,45.7,158.3,0,102,0z M102,199.5
+	c-53.8,0-97.5-43.6-97.5-97.5C4.5,48.2,48.2,4.5,102,4.5s97.5,43.6,97.5,97.5C199.5,155.8,155.8,199.5,102,199.5z"/>
+<g>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.5222" y1="102" x2="199.4778" y2="102">
+		<stop  offset="0.2" style="stop-color:#253B5F"/>
+		<stop  offset="0.9651" style="stop-color:#5EDFFF"/>
+	</linearGradient>
+	<path class="st1" d="M102,199.5c-53.7,0-97.5-43.7-97.5-97.5S48.3,4.5,102,4.5c53.7,0,97.5,43.7,97.5,97.5S155.7,199.5,102,199.5z
+		 M102,8.7C50.5,8.7,8.7,50.5,8.7,102c0,51.5,41.9,93.3,93.3,93.3c51.5,0,93.3-41.9,93.3-93.3C195.3,50.5,153.5,8.7,102,8.7z"/>
+</g>
+</svg>

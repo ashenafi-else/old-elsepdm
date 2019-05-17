@@ -1,0 +1,1141 @@
+{
+    "comment": "This is an invalid manifest. Validation errors are hinted in comments as such",
+    "product": "",
+    "config": {
+        "materials": {
+            "suede":
+            [
+                "mat_suede_A6123E",
+                "mat_suede_232A3C",
+                "mat_suede_CBBB9F",
+                "mat_suede_F75D00",
+                "mat_suede_302F2E"
+            ],
+            "drummed_leather":
+            [
+                "mat_drummed-leather_crismon"
+            ],
+            "shiny_grained_leather":
+            [
+                "mat_shiny-grained-calfskin_orange"
+            ],
+            "nappa_subset":
+            [
+                "mat_nappa_191A1B",
+                "mat_nappa_1B2028",
+                "mat_nappa_F6F5F2",
+                "mat_nappa_AA0028"
+            ],
+            "nappa":
+            [
+                "mat_nappa_191A1B",
+                "mat_nappa_1B2028",
+                "mat_nappa_F6F5F2",
+                "mat_nappa_AA0028",
+                "mat_nappa_E62900",
+                "mat_nappa_B482AD"
+            ],
+            "smooth_calfskin":
+            [
+                "mat_smooth-calfskin_C9C9C9",
+                "mat_smooth-calfskin_FFB8F5"
+            ],
+            "cotton":
+            [
+                "mat_cotton_DEDCDF",
+                "mat_cotton_302F2E",
+                "mat_cotton_C40A34",
+                "mat_cotton_A5A1A1",
+                "mat_cotton_FF7400",
+                "mat_cotton_AC7BA8",
+                "mat_cotton_354153"
+            ],
+            "metal":
+            [
+                "mat_metal_945F17",
+                "mat_metal_424242"
+            ],
+            "logo":
+            [
+                "mat_transparent-logo_silver",
+                "mat_transparent-logo_gold"
+            ]
+        },
+        "components": [
+            {
+                "comment": "no name",
+                "visible": true,
+                "order": 1,
+                "component": "1",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "comment": "no name and elements",
+                        "structure": "1"
+                        }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 2,
+                "name": "flaps",
+                "component": "2",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "flaps",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "comment": "no path and active_color",
+                                "name": "flaps",
+                                "element": "0",
+                                "configurable": true,
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather"
+                            },
+                            {
+                                "comment": "contains invalid material",
+                                "name": "flaps borders",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "flaps-borders",
+                                "materials": [
+                                    "invalid material"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "flaps stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "flaps-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 3,
+                "name": "front lid",
+                "component": "3",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                  {
+                    "comment": "No name",
+                    "structure": "1",
+                    "elements": [
+                      {
+                        "name": "front lid",
+                        "element": "0",
+                        "configurable": true,
+                        "path": "front-lid",
+                        "materials": [
+                          "suede",
+                          "drummed_leather",
+                          "shiny_grained_leather",
+                          "nappa_subset",
+                          "smooth_calfskin"
+                        ],
+                        "active_material": "drummed_leather",
+                        "active_color": "mat_drummed-leather_crismon"
+                      },
+                      {
+                        "name": "front lid border",
+                        "element": "1",
+                        "configurable": true,
+                        "path": "front-lid-border",
+                        "materials": [
+                          "nappa"
+                        ],
+                        "active_material": "nappa",
+                        "active_color": "mat_nappa_191A1B"
+                      },
+                      {
+                        "name": "front lid stitches",
+                        "element": "2",
+                        "configurable": true,
+                        "path": "front-lid-stitches",
+                        "materials": [
+                          "nappa"
+                        ],
+                        "active_material": "nappa",
+                        "active_color": "mat_nappa_191A1B"
+                      }
+                    ]
+                  },
+                  {
+                        "name": "front lid test",
+                        "structure": "2",
+                        "elements": [
+                            {
+                                "comment": "No path",
+                                "name": "front lid",
+                                "element": "0",
+                                "configurable": true,
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "front lid border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "front-lid-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "comment": "No active color",
+                                "name": "front lid stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "front-lid-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 4,
+                "name": "handle",
+                "component": "4",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "handle",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "handle",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "handle",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "handle stitches",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "handle-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 5,
+                "name": "piping",
+                "component": "5",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "piping",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "piping",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "piping",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "piping borders",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "piping-borders",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "piping stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "piping-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 6,
+                "name": "side tabs",
+                "component": "6",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "side tabs",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "side tabs",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "side-tabs",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "side tabs borders",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "side-tabs-borders",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "side tabs stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "side-tabs-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 7,
+                "name": "front zipper border",
+                "component": "7",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "front zipper border",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "front zipper patch",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "front-zipper-patch",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "front zipper patch border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "front-zipper-patch-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "front ipper patch stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "front-zipper-patch-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 8,
+                "name": "front zipper fabric",
+                "component": "8",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "front zipper fabric",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "front zipper fabric",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "front-zipper-fabric",
+                                "materials": [
+                                    "cotton"
+                                ],
+                                "active_material": "cotton",
+                                "active_color": "mat_cotton_C40A34"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 9,
+                "name": "front zipper tab",
+                "component": "9",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "front zipper tab",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "front zipper tab",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "front-zipper-tab",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "front zipper tab stitches",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "front-zipper-tab-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "front zipper tab border",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "front-zipper-tab-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 10,
+                "name": "handle tabs",
+                "component": "10",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "handle tabs",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "handle tabs",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "handle-tabs",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "handle tabs borders",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "handle-tabs-borders",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "handle tabs stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "handle-tabs-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 11,
+                "name": "middle lid back",
+                "component": "11",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "middle lid back",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "middle lid back",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "middle-lid-back",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "middle lid back border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "middle-lid-back-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "middle lid back stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "middle-lid-back-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 12,
+                "name": "back tab",
+                "component": "12",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "back tab",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "back tab",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "back-tab",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "back tab border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "back-tab-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "back tab stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "back-tab-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 13,
+                "name": "back tab",
+                "component": "13",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "lining",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "lining",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "lining",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "lining stitches",
+                                "element": "3",
+                                "configurable": true,
+                                "path": "lining-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 14,
+                "name": "piping side",
+                "component": "14",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "piping side",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "piping side",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "piping-side",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "piping side border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "piping-side-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "piping side stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "piping-side-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 15,
+                "name": "upper zip fabric",
+                "component": "15",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "upper zip fabric",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "upper zip fabric",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "upper-zip-fabric",
+                                "materials": [
+                                    "cotton"
+                                ],
+                                "active_material": "cotton",
+                                "active_color": "mat_cotton_C40A34"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 16,
+                "name": "upper zip tab",
+                "component": "16",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "upper zip tab",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "upper zip tab",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "upper-zip-tab",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "upper zip tab stitches",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "upper-zip-tab-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "upper zip tab border",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "upper-zip-tab-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 17,
+                "name": "zip front",
+                "component": "17",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "zip front",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "zip front",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "zip-front",
+                                "materials": [
+                                    "metal"
+                                ],
+                                "active_material": "metal",
+                                "active_color": "mat_metal_945F17"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 18,
+                "name": "upper lid back",
+                "component": "18",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "upper lid back",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "upper lid back",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "upper-lid-back",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "upper lid back border",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "upper-lid-back-border",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            },
+                            {
+                                "name": "upper lid back stitches",
+                                "element": "2",
+                                "configurable": true,
+                                "path": "upper-lid-back-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 19,
+                "name": "gliders",
+                "component": "19",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "gliders",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "gliders",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "gliders",
+                                "materials": [
+                                    "metal"
+                                ],
+                                "active_material": "metal",
+                                "active_color": "mat_metal_945F17"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 20,
+                "name": "upper zip",
+                "component": "20",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "upper zip",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "upper zip",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "upper-zip",
+                                "materials": [
+                                    "metal"
+                                ],
+                                "active_material": "metal",
+                                "active_color": "mat_metal_945F17"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 21,
+                "name": "logo",
+                "component": "21",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "logo",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "logo",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "logo",
+                                "materials": [
+                                    "logo"
+                                ],
+                                "active_material": "logo",
+                                "active_color": "mat_transparent-logo_gold"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 22,
+                "name": "lining pocket zipper",
+                "component": "22",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "lining pocket zipper",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "lining pocket zipper",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "lining-pocket-zipper",
+                                "materials": [
+                                    "metal"
+                                ],
+                                "active_material": "metal",
+                                "active_color": "mat_metal_945F17"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "comment": "contains no structures",
+                "visible": true,
+                "order": 23,
+                "name": "lining pocket zipper pull",
+                "component": "23",
+                "optional": false,
+                "configurable": true
+            },
+            {
+                "visible": true,
+                "order": 24,
+                "name": "lining pocket trim",
+                "component": "24",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "lining pocket trim",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "lining pocket trim",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "lining-pocket-trim",
+                                "materials": [
+                                    "suede",
+                                    "drummed_leather",
+                                    "shiny_grained_leather",
+                                    "nappa_subset",
+                                    "smooth_calfskin"
+                                ],
+                                "active_material": "drummed_leather",
+                                "active_color": "mat_drummed-leather_crismon"
+                            },
+                            {
+                                "name": "lining pocket trim stitches",
+                                "element": "1",
+                                "configurable": true,
+                                "path": "lining-pocket-trim-stitches",
+                                "materials": [
+                                    "nappa"
+                                ],
+                                "active_material": "nappa",
+                                "active_color": "mat_nappa_191A1B"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "visible": true,
+                "order": 25,
+                "name": "lining pocket zipper fabric",
+                "component": "25",
+                "optional": false,
+                "configurable": true,
+                "structures": [
+                    {
+                        "name": "lining pocket zipper fabric",
+                        "structure": "1",
+                        "elements": [
+                            {
+                                "name": "lining pocket zipper fabric",
+                                "element": "0",
+                                "configurable": true,
+                                "path": "lining-pocket-zipper-fabric",
+                                "materials": [
+                                    "cotton"
+                                ],
+                                "active_material": "cotton",
+                                "active_color": "mat_cotton_C40A34"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "default_configuration_path": "1,1:3,1:2,1:4,1:5,1:6,1:7,1:8,1:9,1:10,1:11,1:12,1:13,1:14,1:15,1:16,1:17,1:18,1:19,1:20,1:21,1:22,1:23,1:24,1:25,1",
+        "available_configurations": [
+            {
+                "1":"1",
+                "2":"1",
+                "3":"1",
+                "4":"1",
+                "5":"1",
+                "6":"1",
+                "7":"1",
+                "8":"1",
+                "9":"1",
+                "10":"1",
+                "11":"1",
+                "12":"1",
+                "13":"1",
+                "14":"1",
+                "15":"1",
+                "16":"1",
+                "17":"1",
+                "18":"1",
+                "19":"1",
+                "20":"1",
+                "21": "",
+                "22":"invalid structure",
+                "23":"1",
+                "24":"1",
+                "25":"1"
+            }
+        ]
+    }
+}

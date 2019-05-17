@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 989.4 15.5" xml:space="preserve">
+    <pattern  y="15.5" width="12.3" height="12.3" patternUnits="userSpaceOnUse" id="Unnamed_Pattern" viewBox="0 -12.3 12.3 12.3" style="overflow:visible;">
+        <g>
+            <polygon style="fill:none;" points="0,-12.3 12.3,-12.3 12.3,0 0,0 		"/>
+            <polygon style="fill:#0C5880;" points="12.3,-12.3 0,-12.3 0,0 12.3,0 		"/>
+            <g style="opacity:0.2;">
+                <g>
+                    <defs>
+                        <rect id="SVGID_1_" x="0" y="-12.3" width="12.3" height="12.3"/>
+                    </defs>
+                    <clipPath id="SVGID_2_">
+                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                    </clipPath>
+
+                        <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#58D9F1;stroke-width:0.5;stroke-miterlimit:10;" x1="6.2" y1="0" x2="6.2" y2="-12.3"/>
+
+                        <line style="clip-path:url(#SVGID_2_);fill:none;stroke:#58D9F1;stroke-width:0.5;stroke-miterlimit:10;" x1="12.3" y1="-6.2" x2="0" y2="-6.2"/>
+                </g>
+            </g>
+        </g>
+    </pattern>
+    <g>
+        <g>
+            <g style="opacity:0.75;">
+                <g>
+                    <pattern  id="SVGID_3_" xlink:href="#Unnamed_Pattern" patternTransform="matrix(0.5148 0 0 0.2817 -1245.96 -5127.9189)">
+                    </pattern>
+                    <polygon style="fill:url(#SVGID_3_);" points="988.9,15 661.9,15 649.2,8.4 0.5,8.4 0.5,0.5 988.9,0.5 				"/>
+                    <polygon style="fill:none;stroke:#58D9F1;stroke-miterlimit:10;" points="988.9,15 661.9,15 649.2,8.4 0.5,8.4 0.5,0.5
+                        988.9,0.5 				"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

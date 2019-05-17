@@ -1,0 +1,17 @@
+#product-start-screen .list-items .element img {
+    margin: auto;
+}
+
+.scans {
+    max-width:960px;
+    text-align:center;
+}
+
+.scans img {
+    position:relative;
+    display: inline-block;
+    float:left;
+    padding:0px;
+    height: 370px;
+    width: auto;
+}

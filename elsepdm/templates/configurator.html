@@ -1,0 +1,1925 @@
+<!--! This is a Chameleon template. For more information go to 'https://chameleon.readthedocs.io/'.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MainScreen</title>
+    <meta charset="UTF-8">
+    <link href="http://console.sm.mystyle.cloud/static/configurator/mainscreen/css/main.css" rel="stylesheet">
+    <link href="http://console.sm.mystyle.cloud/static/configurator/mainscreen/css/reset.css" rel="stylesheet">
+    <link href="http://console.sm.mystyle.cloud/static/configurator/mainscreen/css/loader.css" rel="stylesheet">
+    <link href="http://console.sm.mystyle.cloud/static/configurator/mainscreen/css/screens.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext"
+          rel="stylesheet">
+    <link href="http://console.sm.mystyle.cloud/static/configurator/mainscreen.css" rel="stylesheet">
+</head>
+<body>
+<div id="else-mainscreen-control">
+    <div id="loader" :visible="visible" v-show="visible.pending">
+        <div class="img"></div>
+    </div>
+    <header-component :visible="visible" :states="states" :active_state="active_state" v-if="visible.header"
+                      inline-template>
+        <header class="controller-header" id="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo"></div>
+                </div>
+                <div class="header-center">
+                    <span class="screen-name">{{tr(active_state)}}</span>
+                </div>
+                <div class="header-right">
+                    <div class="login acc-login">
+                        <div class="go-account" v-if="visible.header_customer_profile_button">
+                                    <span class="user-name">
+                                        {{states.customer_login_view.active_customer.firstname}}
+                                        {{states.customer_login_view.active_customer.lastname}}
+                                    </span>
+                        </div>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="recommended-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <span class="fitting-factor">{{getFittingValues().best_size.score}}</span>
+                            </div>
+                            <!-- <span v-if="getFittingValues().best_style != null">{{tr('Best style')}}
+                                <span id="fitting-factor"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">
+                                    {{getFittingValues().best_style.size}}:{{getFittingValues().best_style.score}}
+                                </span>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </header-component>
+    <stores inline-template :states="states" :visible="visible" v-if="states.store_view.active">
+        <div class="page page-mainscreen vr-page-mainscreen page-store-selection" id="stores-screen">
+            <div class="header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/>
+                    </div>
+                </div>
+                <div class="col-1 header-col header-end">
+                    <div class="logo header-logo">
+                        <!--<img class="logo-micam" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_Micam.png">-->
+                        <!-- <img class="logo-micam" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main store-list main-mainscreen centered-content">
+                <h2 class="underline text-blue-bordered">{{tr("Select a store")}}</h2>
+                <div class="store" :class="store.code" :id="store.id" @click="setActiveStore(store.id)"
+                     v-for="store in store_list">
+                    <a>{{tr(store.name)}}</a>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="hidden micam-show stylish-text">{{tr("3D Retail Revolution")}}</div>
+                <img class="atom-logos" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logos_atom.png">
+                <!--<img class="logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif">-->
+            </div>
+        </div>
+    </stores>
+    <session-code inline-template v-if="states.login_view.active">
+        <div class="page page-mainscreen vr-page-mainscreen page-session-code" id="session-code-screen">
+            <div class="header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden vr-show logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-predit" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/pi-apparel/predit_logo_alpha_small.png"/>
+                        <!-- <img class="logo-micam" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="h-80per session-code centered-content">
+                    <img class="hidden acc-show accenture-logo-img h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-black.png">
+                    <img class="hidden vr-show logo-chromium h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-elseshoes.png"/>
+                    <span class="collaboration hidden stgallen-show">in collaboration with</span>
+                    <img class="hidden ac-show logo-altroconsumo-big h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/big_block.png"/>
+                    <img class="hidden stgallen-show stgallen-logo-img  h-50per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logos-block.png"/>
+                    <span class="code">{{tr("Your session code")}}:{{session_code}}</span>
+                    <img class="qr-code h-50per " :src="qrImage"/>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="hidden vr-stylish-text apparel-show ">{{tr("PI Apparel Berlin 2017")}}</div>
+                <div class="hidden micam-show stylish-text">{{tr("3D Retail Revolution")}}</div>
+                <img class="hidden vr-show logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/>
+                <img class="hidden ac-show logo-altroconsumo" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                <img class="hidden ac-show logo-else-corp" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-else-corp.png"/>
+                <!-- <img class="hidden vr-show logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"> -->
+                <img class="hidden acc-show acc-logos" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/logos.png">
+                <img class="hidden acc-hidden vr-show atom-logos" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logos_atom.png">
+                <!-- <img class="hidden stgallen-show logo-else-corp" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"> -->
+            </div>
+        </div>
+    </session-code>
+    <product-start-screen inline-template :states="states" v-if="states.collection_view.active" id="collection-screen">
+        <div class="page content page-mainscreen" id="product-start-screen">
+             <!-- <div class="logo-section">
+                <img class="logo" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo.png">
+                <span class="logo-line"></span>
+            </div> -->
+            <div class="header stgallen-header acc-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                        <!-- <img class="hidden vr-show logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/> -->
+                    </div>
+                </div>
+                <div class="col header-col header-middle">
+                    <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                    <span class="hidden stgallen-show stgallen-title">{{tr('Collections')}}</span>
+
+                </div>
+                <div class="col header-col header-end">
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-predit" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/pi-apparel/predit_logo_alpha_small.png"/>
+                        <!-- <img class="logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                        <!-- <img class="logo-micam" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="collections centered-content">
+                    <h2 class="underline text-blue-bordered">{{tr("Select a collection")}}</h2>
+                    <div class="element"
+                         @click="setActive(collection.id)"
+                         :class="[collection.active?'active':'', collection.name]"
+                         :id="collection.id"
+                         v-for="collection in states.collection_view.collections">
+                        <div class="">
+                            <h2>{{tr(collection.name)}}</h2>
+                        </div>
+                        <!-- <video src="/src/mainscreen/img/accenture/1-2.mp4" autoplay="autoplay" loop="loop" class="menvideo"></video>
+                        <img class="collection-img" :src="collection.image"/> -->
+                        <!-- <button class="" @click="continueAction">{{tr('Continue')}}</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/logos.png"/>
+                <div class="hidden micam-show stylish-text">{{tr("3D Retail Revolution")}}</div>
+                <img class="hidden vr-show atom-logos" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logos_atom.png">
+                <!-- <img class="logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"> -->
+            </div>
+        </div>
+    </product-start-screen>
+    <product-config-nfc inline-template :states="states" :visible="visible" :state="states.nfc_scanner_config" v-if="states.nfc_scanner_config.active">
+        <div class="page" id="product-config-nfc">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                </div>
+                <div class="col header-col header-middle">
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+
+                </div>
+            </div>
+            <div class="main">
+                <div class="h-80per nfc-config centered-content">
+                    <div class="nfc-text">{{tr("Place the shoe on the NFC platform to start configure")}}</div>
+                    <img class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/nfc.png">
+                    <img class="hidden acc-show nfc-icon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/nfc-icon-blue.png">
+                    <!-- <input type="hidden" name="nfc_code" v-model="nfc_code" v-show="show_input" @change="applyCode(nfc_code)" ref="nfc_input" id="nfc_input"> -->
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </product-config-nfc>
+    <product-list inline-template :visible="visible" :states="states" v-if="states.product_list_view.active">
+        <div class="page page-mainscreen page-product-list" id="product-list-screen">
+            <div class="header mainscreen-header acc-header stgallen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/>
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="hidden acc-show acc-hidden acc-stylish-title">{{tr('Virtual Catalogue 3D')}}</span>
+                    <span class="hidden stgallen-show stgallen-title">{{tr('Virtual Catalogue 3D')}}</span>
+                    <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                    <div class="elsa-container">
+                        <!--<img class="hidden micam-show apparel-show vr-show logo-elsa-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/elsa-small.png"/>-->
+                        <img class="hidden apparel-show micam-show vr-show else-shoes-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <!--<img class="hidden ac-show logo-elsa-ac" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/elsa.png"/>-->
+                        <!-- <img class="hidden acc-show logo-elsa-ac" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/elsa-green.png"/> -->
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="hidden logo header-logo">
+                        <span class="vr-stylish-text"></span>
+                        <!-- <img class="logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                        <!--<img class="logo-predit" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/pi-apparel/predit_logo_alpha_small.png"/>-->
+                        <!--<img class="hidden apparel-show logo-predit-white" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/pi-apparel/pi-apparel-logo-white.png"/>-->
+                    </div>
+                </div>
+            </div>
+            <div class="main virtual-catalog">
+                <div class="list-items">
+                    <div class="element"
+                         @click="setActiveProduct(product.uuid)"
+                         :class="[product.active?'active':'', product.name]"
+                         :id="product.id"
+                         v-for="product in states.product_list_view.products">
+
+
+                        <div class="element-boot h-80per">
+                            <!--<div class="product_fitt_score"-->
+                            <!--:class="getFittingClass(getFittingValues().best_size.score)"-->
+                            <!--v-if="product.fit_score != null">{{product.fit_score}}</div>-->
+                            <div class="element-border">
+                                <img class="blue-border-picture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/blue-border.svg"/>
+                                <img class="active-picture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/active-border.svg"/>
+                                <img class="circle-shadow-pic" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/circle-shadow.png"/>
+                                <!--<img class="collection-img"-->
+                                     <!--v-show="!product.active || !product.gif"-->
+                                     <!--:src="product.img"-->
+                                     <!--:alt="product.name"/>-->
+
+                                <!--<img class="collection-img"-->
+                                     <!--v-show="product.active && product.gif"-->
+                                     <!--:src="product.gif"-->
+                                     <!--:alt="product.name"/>-->
+                                <!--<div v-show="product.active">-->
+                                    <!--<img class="collection-img"-->
+                                         <!--:alt="product.name"/>-->
+                                <!--</div>-->
+                                <!--<div v-show="!product.active">-->
+                                    <!--<img class="collection-img"-->
+                                         <!--:src="product.img"-->
+                                         <!--:alt="product.name"/>-->
+                                <div class="collection-img" :class="[product.name.replace('-', '_'), product.active?'active':'']">
+                                    <!--<img-->
+                                         <!--:alt=""/>-->
+                                </div>
+                                <!--<div >-->
+
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+
+
+                        <button class="name">
+                            <span>{{tr(product.name)}}</span>
+                        </button>
+
+
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="continue-to-configurator" @click="continueAction">{{tr('Continue')}}</button>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/logos.png"/>
+                <img class="logo-altroconsumo hidden ac-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                <img class="hidden ac-show logo-else-corp h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-else-corp.png"/>
+                <img class="hidden apparel-show micam-show logo-else-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Logo_ELSE.png"/>
+                <!--<img class="hidden apparel-show micam-show vr-show else-shoes-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">-->
+                <!-- <img class="hidden vr-show logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"> -->
+                <img class="hidden vr-show atom-logos" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logos_atom.png">
+                <!-- <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/poweredby-acc-else.png"> -->
+                <!-- <img class="mcpc" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"> -->
+            </div>
+        </div>
+    </product-list>
+    <product-details inline-template
+                     :configuration="configuration"
+                     :states="states"
+                     :state="states.product_view"
+                     :data="api2Data"
+                     v-if="states.product_view.show_on_main"
+                     :preview_image="preview_image"
+                     :more_details="more_details">
+        <div class="page page-mainscreen" id="product-details-screen">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                    <span class="back-to">
+                                <!--<a>{{getCollectionName()}}</a>-->
+                            </span>
+                </div>
+                <div class="col header-col header-middle" v-if="data.active_component">
+                    <span class="vr-stylish-text">
+                        <!--<span class="hidden vr-show acc-show">{{tr('Product Configurator')}} -</span>-->
+                        <span class="hidden vr-show acc-hidden component-name">{{tr(data.active_component.name)}}</span>
+                        <span class="hidden ac-show">{{tr('3D Virtual Boutique')}}</span>
+                    </span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                    </div>
+                    <span class="stgallen-title">
+                        <!--<span class="hidden stgallen-show">{{tr('3D Product Configurator')}} -</span>-->
+                        <span class="hidden stgallen-show component-name">{{tr(data.active_component.name)}}</span>
+                    </span>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">{{getUserName()}}</span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="states.customer_fitting_view.active_comparision">
+                                         <span id="rec-size" class="fitting-size">
+                                            {{states.customer_fitting_view.best_size.RIGHT_FOOT.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(states.customer_fitting_view
+                                      .best_size.score)">{{states.customer_fitting_view.best_size.RIGHT_FOOT.score}}</span>
+                            </div>
+                            <!-- <span v-if="getFittingValues().best_style != null">{{tr('Best style')}}
+                                <span id="fitting-factor"
+                                      :class="getFittingClass()">
+                                    {{getFittingValues().best_style.size}}:{{getFittingValues().best_style.score}}
+                                </span>
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="logo-pwd-else acc-hidden" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="main-start">
+                        <div class="components-block">
+                            <div class="http://console.sm.mystyle.cloud/static/configurator-block ac-configurator-block vr-configurator-block heels"
+                                 :class="state.active_product.name"
+                                 v-if="state.products.length > 1">
+                                <!--<div class="column_1 table-header">{{tr("Model")}}</div>-->
+                                <div class="title vr-block-title ac-block-title w-80per">{{tr("Heel type")}}</div>
+                                <div class="heels-list">
+                                    <div class="component heel-height"
+                                         @click="changeProduct(product)"
+                                         :class="[product.name, setClass(product.id, 'product'), product.active?'control-active':'']"
+                                         :id="'product-' + product.id"
+                                         v-for="product in state.products">
+                                        <span class="name">{{tr(product.name)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="http://console.sm.mystyle.cloud/static/configurator-block ac-configurator-block vr-configurator-block configurable-parts-block" style="
+                            border-width: 2px;
+                            border-style: solid;
+                            border-color: rgba(246,95,0,0.651);
+                            border-radius: 15px;
+                            background-color: rgba(217,217,217,0.2);">
+                                <div class="title vr-block-title ac-block-title w-80per hidden ac-show acc-show apparel-show micam-show vr-show vr-logo-img" style="
+                                background-color: rgba(246,95,0,0.651);
+                                color: white;
+                                width: 100%;
+                                border-radius: 11px 11px 0px 0px;">
+                                    {{tr("Configurable parts")}}</div>
+                                <div class="title vr-block-title ac-block-title w-80per hidden stgallen-show">{{tr("Parts")}}</div>
+                                <div class="configurable-parts-container" style="color: white;">
+                                    <div class="component"
+                                         @click="changeComponent(component)"
+                                         :class="[component.name, state.active_product.name, component.active?'active':'']"
+                                         :id="'component-' + component.id"
+                                         v-if="component.configurable"
+                                         v-for="component in data.components">
+                                        <span class="name">{{tr(component.name)}}</span>
+                                        <div class="structure"></div>
+
+                                        <div class="structure-dropped" v-if="component.active && moreThanOne(component.structures)">
+                                            <div class="structure-item component-item"
+                                                 @click="changeStructure(structure)"
+                                                 :class="[structure.name, structure.structure == data.active_structure.structure?'active':'']"
+                                                 v-for="structure in component.structures">
+                                                <!--<img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/options/camera_active.png"/>-->
+                                                <span class="name">{{tr(structure.name)}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Elements block-->
+                            <div class="http://console.sm.mystyle.cloud/static/configurator-block ac-configurator-block vr-configurator-block configurable-parts-block" style="
+                            border-width: 2px;
+                            border-style: solid;
+                            border-color: rgba(246,95,0,0.651);
+                            border-radius: 15px;
+                            background-color: rgba(217,217,217,0.2);"
+                                 v-show="data.configurable_elements_count > 1">
+                                <div class="title vr-block-title ac-block-title w-80per hidden ac-show acc-show apparel-show micam-show vr-show vr-logo-img" style="
+                                background-color: rgba(246,95,0,0.651);
+                                color: white;
+                                width: 100%;
+                                border-radius: 11px 11px 0px 0px;">
+                                    {{tr("Configurable elements")}}</div>
+                                <div class="configurable-parts-container" style="color: white;">
+                                    <div class="component"
+                                         @click="changeElement(element)"
+                                         :class="[element.name, state.active_product.name, element.active?'active':'']"
+                                         v-if="element.configurable"
+                                         v-for="element in data.active_structure.elements">
+                                        <span class="name">{{tr(element.name)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="http://console.sm.mystyle.cloud/static/configurator-item go-account" @click="goAccount">-->
+                                <!--<span class="profile-icon"></span>-->
+                                <!--<span class="profile-name">Register/Login</span>-->
+                            <!--</div>-->
+                            <!--<div class="http://console.sm.mystyle.cloud/static/configurator-item go-order" @click="order">-->
+                        <!--<span class="order-icon"></span>-->
+                        <!--<span class="text">{{tr("Order")}}</span>-->
+
+                <div class="button-container">
+                    <button class="create-order-button" @click="order">{{tr('Order')}}</button>
+                </div>
+                    <!--</div>-->
+                            <!-- <div class="http://console.sm.mystyle.cloud/static/configurator-block ac-configurator-block vr-configurator-block non-configurable-parts-block">
+                                <div class="title vr-block-title ac-block-title w-80per">{{tr("Non configurable parts")}}</div>
+                                <div class="non-configurable-parts-container">
+                                    <div class="component"
+                                         :class="[component.name, state.active_product.name, component.active?'active':'']"
+                                         :id="'component-' + component.id"
+                                         v-if="!component.configurable"
+                                         v-for="component in data.components">
+                                        <span class="name">{{tr(component.name)}}</span>
+                                        <div class="structure"></div>
+                                    </div>
+                                </div>
+                            </div> -->
+                    </div>
+
+                    <div class="monogram-block vertical-bar"
+                          v-if="data.active_structure.monogram && data.active_structure.monogram.enabled">
+                        <div class="title vr-block-title ac-block-title w-80per">{{tr("Monogram")}}</div>
+                        <div class="monogram-area">
+                            <div class="block__container">
+                                <div class="monogram-text" maxlength="4" >
+                                    {{data.active_structure.monogram.default_text}}
+                                </div>
+
+                                <div class="monogram-option"
+                                     v-for="(values, option) in data.active_structure.monogram.options"
+                                     v-if="isArray(values)"
+                                     :class="option">
+                                    <div>{{tr(option)}}</div>
+
+                                    <span :class="[(data.active_structure.monogram.defaults[option] == value) ? 'active' : '', value]"
+                                          v-for="value in values">
+                                        <label :for="option + '_' + value">{{tr(value)}}</label>
+                                        <input :id="option + '_' + value"
+                                               v-model="data.active_structure.monogram.defaults[option]"
+                                               class="monogram-select"
+                                               :value="value"
+                                               type="radio"
+                                               style="display: none">
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="price-block" :class="more_details?'more_details':'less_details'">-->
+                        <!--<div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block diff-prices-container">-->
+                            <!--<div class="vr-model-name title vr-block-title ac-block-title"><span>{{tr(state.active_product.name)}}</span></div>-->
+                            <!--<div class="product-preview vr-product-preview ac-product-preview">-->
+                                <!--<img class="live-image" :src="preview_image">-->
+                            <!--</div>-->
+
+                            <!--<div class="detailed-price" v-if="states.product_view.current_configuration_price && more_details ">-->
+                                <!--<table class="price-table-head">-->
+                                    <!--<tr>-->
+                                        <!--<td>Part</td>-->
+                                        <!--<td>Price</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                                <!--<table class="table table&#45;&#45;product-summary price">-->
+                                    <!--<tr class="base-mod-price">-->
+                                        <!--<td>{{tr("Base model")}}:</td>-->
+                                        <!--<td>{{states.product_view.current_configuration_price.base}} &#8364;</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr class="extra-acc-price"-->
+                                        <!--v-for="value, name in states.product_view.current_configuration_price.details">-->
+                                        <!--<td>{{tr(name)}}:</td>-->
+                                        <!--<td>{{tr(value)}} &#8364;</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                            <!--</div>-->
+                            <!--<div class="summary-block">-->
+                                <!--<div class="material-summary">{{tr("Material")}}: <span>Suede</span></div>-->
+                                <!--<div class="color-summary">{{tr("Color")}}: <span>Signal Red</span></div>-->
+                                <!--<div class="accessories-summary"></div>-->
+                            <!--</div>-->
+                            <!--<div class="prices" v-if="states.product_view.current_configuration_price">-->
+                                <!--<div class="price">-->
+                                    <!--<p class="base-mod-price">-->
+                                        <!--{{tr("Base model")}}: <span-->
+                                            <!--class="price-span">{{states.product_view.current_configuration_price.base}},00 &#8364;-->
+                                    <!--</span>-->
+                                    <!--</p>-->
+                                    <!--<p class="extra-acc-price"  v-for="value, name in states.product_view.current_configuration_price.details">-->
+                                        <!--{{tr(name)}}: <span class="price-span">{{tr(value)}},00 &#8364;-->
+                                    <!--</span>-->
+                                    <!--</p>-->
+                                    <!--<p class="extra-mat-price">-->
+                                        <!--{{tr("Extra materials")}}: <span class="price-span">0,00 &#8364;-->
+                                    <!--</span>-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="delivery-time">-->
+                            <!--<div class="delivery"></div>-->
+                            <!--<div class="total-price" v-if="states.product_view.current_configuration_price">-->
+                                <!--{{states.product_view.current_configuration_price.total}},00 &#8364;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!-- <div class="description-product">
+                        <img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/configurations.png">
+                        <ul class="col-16">
+                            <ul id="description4" class="options"
+                                :class="state.active_product.name">
+                                <li class="number-configurations">{{configuration.structure.structures_count*configuration.structure.materials_count*configuration.structure.colors_count}}</li>
+                                <li class="number-elements">{{configuration.structure.structures_count}}</li>
+                                <li class="number-materials">{{configuration.structure.materials_count}}</li>
+                                <li class="number-colors">{{configuration.structure.colors_count}}</li>
+                            </ul>
+                        </ul>
+                    </div> -->
+                    <!--<div class="diy"><span>DIY&AI</span></div>-->
+                </div>
+                <div class="main-middle" v-if="data.active_component">
+                    <div class="details-block">
+                        <div class="types-block" v-if="data.active_component.show_place">
+                            <div class="title w-50per">{{tr('Place')}}</div>
+                            <div class="types-block-container">
+                                <div class="component-item"
+                                     :class="[component.component, (component.component == data.active_component.component) ? 'active' : '']"
+                                     v-if="component.show_place"
+                                     v-for="component in configuration.structure.config.components">
+                                    <span class="name">{{tr(component.name)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="types-block" v-if="data.active_component.show_type">
+                            <div class="title w-50per">{{tr('Type')}}</div>
+                            <div class="types-block-container">
+                                <div class="component-item"
+                                     :class="[component.component, (component.component == data.active_component.component) ? 'active' : '']"
+                                     v-if="component.show_type"
+                                     v-for="component in configuration.structure.config.components">
+                                    <span class="name">{{tr(component.name)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="types-block">
+                            <div class="title w-50per">{{tr('Detail')}}</div>
+                            <div class="types-block-container">
+                                <div class="component-item active">
+                                    <img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/components/w-not_transparent_crystal.png">
+                                    <span class="name">Solid</span>
+                                </div>
+                                <div class="component-item">
+                                    <img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/components/w-transparent_crystal.png">
+                                    <span class="name">Trasparent</span>
+                                </div>
+                                <div class="component-item">
+                                    <img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/components/Crystal_Base.png">
+                                    <span class="name">Base</span>
+                                </div>
+                            </div>scan-section
+                        </div>
+                    </div>
+                </div>
+                <div class="main-end" v-if="data.active_structure">
+                    <!--<div class="product-options">-->
+                    <!--<ul class="options">-->
+                    <!--<li class="number-configurations">{{configuration.structure.configurations_count}}</li>-->
+                    <!--<li class="number-elements">{{configuration.structure.components_count}}</li>-->
+                    <!--<li class="number-materials">{{configuration.structure.materials_count}}</li>-->
+                    <!--<li class="number-colors">{{configuration.structure.colors_count}}</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <div class="element"
+                         :class="state.active_product.name"
+                         v-if="data.active_component.configurable && element.configurable"
+                         v-for="element in data.active_structure.elements">
+                        <div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block materials-color-block">
+                            <div class="title vr-block-title ac-block-title acc-title"><span>{{tr("Materials")}}</span></div>
+                            <span>
+                                <div class="material-block diff-prices-container"
+                                     :class="[state.active_product.name, material.name]"
+                                     @click.stop="changeMaterial(data.active_element, material)"
+                                     v-for="material in data.active_element.colors">
+                                    <div class="material-head"
+                                         :class="[material.name,(element.active_material == material.name)?'active':'']">
+                                        <div class="material-start">
+                                            <div class="material-icon big-active-material"
+                                                 :class="[element.active_color]"
+                                                 :style="{backgroundImage: ['url(' + material.active_color_image + ')', 'center', 'center', 'no-repeat']}">
+                                            </div>
+                                            <div class="material-name">{{getMaterialName(material)}}</div>
+                                        </div>
+                                        <div class="mc configurator-block vr-configurator-block ac-configurator-block colors-block">
+                                            <div class="title vr-block-title ac-block-title color-title w-70per "><span>Colors</span></div>
+                                            <!--:style="{backgroundImage: ['url(' + color.image + ')', 'center', 'center', 'no-repeat']}"-->
+                                            <span>
+                                                <div class="color"
+                                                     :style="{backgroundImage: ['url(' + color.image + ')', 'center', 'center', 'no-repeat']}"
+                                                     @click.self="changeColor(data.active_element, material, color)"
+                                                     :class="[color.name ,(element.active_color == color.name)?'active':'']"
+                                                     v-for="color in material.colors">
+                                                    <span class="hidden stgallen-show">{{tr(color.name)}}</span>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="else-shoes"></div>-->
+                <!-- <div class="stgallen-hidden wishlist configurator-block vr-wishlist ac-wishlist " id="wish-list">
+                    <div class="title acc-title wl-title">{{tr("Wishlist")}} ({{state.wishlist.list.length}})</div>
+                    <div class="wl-container" v-if="state.wishlist.active_wish" v-show="state.wishlist.show">
+                        <div class="wl-item">
+                            <div class="item-description">
+                                <img class="acc-hidden vr-show" :class="state.active_product.name" :src="state.wishlist.active_wish.wish.img">
+                                <img class="hidden acc-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/elsa-green.png">
+                                <div>
+                                    <div>{{tr(state.wishlist.active_wish.wish.name)}}</div>
+                                    <span class="configuration-title">{{tr(state.wishlist.active_wish.wish.name)}}
+                                         <div v-for="component in state.wishlist.active_wish.wish.configuration.structure.config.components"
+                                              v-if="component.visible && component.configurable && component.path">
+                                             {{tr(component.name)}}:{{component.path}}
+                                        </div>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--<div class="button-order">Order</div>-->
+            </div>
+            </div>
+    </product-details>
+    <product-preview v-if="states.preview_view.active" id="preview-screen" class="page" :visible="visible" :states="states" :preview_image="preview_image"
+                     inline-template>
+        <div id="product-preview-screen">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="acc-hidden vr-stylish-text">{{tr("Product Preview")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-hidden" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/accenture_white.png"/>
+                        <img class="hidden acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('Part Preview')}}</span> -
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                                <span class="user_name">
+                                    {{states.customer_profile_view.active_customer.firstname}}
+                                    {{states.customer_profile_view.active_customer.lastname}}
+                                </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <div>
+                                    <span class="factor-text">fitting factor</span>
+                                    <span class="factor-score"
+                                          :class="getFittingClass(getFittingValues().best_size.score)">{{getFittingValues().best_size.score}}</span>
+                                </div>
+
+                            </div>
+                            <!-- <span v-if="getFittingValues().best_style != null">{{tr('Best style')}}
+                                <span id="fitting-factor"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">
+                                    {{getFittingValues().best_style.size}}:{{getFittingValues().best_style.score}}
+                                </span>
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="product-area">
+                <!-- <div class="elsa-help-block"><img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Elsa-block.png"></div> -->
+                <div class="default-cameras">
+                    <div class="camera camera-view"
+                         :id="camera"
+                         :class="[tr(camera), states.preview_view.active_camera==camera?'active':'']"
+                         v-for="camera in states.preview_view.cameras"></div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block diff-prices-container">
+                    <div class="vr-model-name title vr-block-title ac-block-title"><span>{{tr(states.product_view.active_product.name)}}</span></div>
+                    <div class="product-preview vr-product-preview ac-product-preview">
+                        <img class="live-image" :src="preview_image">
+                    </div>
+                    <div class="summary-block">
+                        <div class="material-summary">{{tr("Material")}}: <span>Suede</span></div>
+                        <div class="color-summary">{{tr("Color")}}: <span>Signal Red</span></div>
+                        <div class="accessories-summary"></div>
+                    </div>
+                    <div class="prices" v-if="states.product_view.current_configuration_price">
+                        <div class="price">
+                            <p class="base-mod-price">
+                                {{tr("Base model")}}: <span
+                                    class="price-span">{{states.product_view.current_configuration_price.base}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-acc-price"  v-for="value, name in states.product_view.current_configuration_price.details">
+                                {{tr(name)}}: <span class="price-span">{{tr(value)}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-mat-price">
+                                {{tr("Extra materials")}}: <span class="price-span">0,00 &#8364;
+                                    </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-time">
+                    <div class="delivery"></div>
+                    <div class="total-price" v-if="states.product_view.current_configuration_price">
+                        {{states.product_view.current_configuration_price.total}},00 &#8364;
+                    </div>
+                </div>
+            </div>
+            <!--<div class="diy"><span>Ask ELSA</span></div>-->
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </product-preview>
+    <material-preview v-if="states.material_view.active" id="material-screen" :visible="visible" :states="states" :preview_image="preview_image"
+                      inline-template>
+        <div id="material-preview-screen" class="page">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden vr-stylish-text">{{tr("Material Preview")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-hidden" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/accenture_white.png"/>
+                        <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('Material Preview')}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                    {{states.customer_profile_view.active_customer.firstname}}
+                                    {{states.customer_profile_view.active_customer.lastname}}
+                        </span>
+
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">{{getFittingValues().best_size.score}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="preview-area on_detail">
+                <!-- <div class="elsa-help-block"><img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/elsa-small.png"></div> -->
+                <div id="product-cameras" style="">
+                    <div class="camera camera-view"
+                         :id="camera"
+                         :class="[tr(camera), states.material_view.active_camera==camera?'active':'']"
+                         v-for="camera in states.material_view.cameras"></div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block diff-prices-container">
+                    <div class="vr-model-name title vr-block-title ac-block-title"><span>{{tr(states.product_view.active_product.name)}}</span></div>
+                    <div class="product-preview vr-product-preview ac-product-preview">
+                        <img class="live-image" :src="preview_image">
+                    </div>
+                    <div class="summary-block">
+                        <div class="material-summary">{{tr("Material")}}: <span>Suede</span></div>
+                        <div class="color-summary">{{tr("Color")}}: <span>Signal Red</span></div>
+                        <div class="accessories-summary"></div>
+                    </div>
+                    <div class="prices" v-if="states.product_view.current_configuration_price">
+                        <div class="price">
+                            <p class="base-mod-price">
+                                {{tr("Base model")}}: <span
+                                    class="price-span">{{states.product_view.current_configuration_price.base}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-acc-price"  v-for="value, name in states.product_view.current_configuration_price.details">
+                                {{tr(name)}}: <span class="price-span">{{tr(value)}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-mat-price">
+                                {{tr("Extra materials")}}: <span class="price-span">0,00 &#8364;
+                                    </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-time">
+                    <div class="delivery"></div>
+                    <div class="total-price" v-if="states.product_view.current_configuration_price">
+                        {{states.product_view.current_configuration_price.total}},00 &#8364;
+                    </div>
+                </div>
+            </div>
+            <!--<div class="diy"><span>Ask ELSA</span></div>-->
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </material-preview>
+    <part-preview v-if="states.part_view.active" id="part-preview" class="page" :visible="visible" :states="states" :preview_image="preview_image" :preview_image="preview_image" inline-template>
+        <div id="part-preview-screen" class="page">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden vr-stylish-text">{{tr("Detail Preview")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-hidden" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/accenture_white.png"/>
+                        <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('Detail Preview')}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                    {{states.customer_profile_view.active_customer.firstname}}
+                                    {{states.customer_profile_view.active_customer.lastname}}
+                        </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">{{getFittingValues().best_size.score}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="preview-area on_detail">
+                <!-- <div class="elsa-help-block"><img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Elsa-block.png"></div> -->
+                <div id="product-cameras" style="">
+                    <div class="camera camera-view"
+                         :id="camera"
+                         :class="[tr(camera), states.part_view.active_camera==camera?'active':'']"
+                         v-for="camera in states.part_view.cameras"></div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block diff-prices-container">
+                    <div class="vr-model-name title vr-block-title ac-block-title"><span>{{tr(states.product_view.active_product.name)}}</span></div>
+                    <div class="product-preview vr-product-preview ac-product-preview">
+                        <img class="live-image" :src="preview_image">
+                    </div>
+                    <div class="summary-block">
+                        <div class="material-summary">{{tr("Material")}}: <span>Suede</span></div>
+                        <div class="color-summary">{{tr("Color")}}: <span>Signal Red</span></div>
+                        <div class="accessories-summary"></div>
+                    </div>
+                    <div class="prices" v-if="states.product_view.current_configuration_price">
+                        <div class="price">
+                            <p class="base-mod-price">
+                                {{tr("Base model")}}: <span
+                                    class="price-span">{{states.product_view.current_configuration_price.base}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-acc-price"  v-for="value, name in states.product_view.current_configuration_price.details">
+                                {{tr(name)}}: <span class="price-span">{{tr(value)}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-mat-price">
+                                {{tr("Extra materials")}}: <span class="price-span">0,00 &#8364;
+                                    </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-time">
+                    <div class="delivery"></div>
+                    <div class="total-price" v-if="states.product_view.current_configuration_price">
+                        {{states.product_view.current_configuration_price.total}},00 &#8364;
+                    </div>
+                </div>
+            </div>
+            <!--<div class="diy"><span>Ask ELSA</span></div>-->
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </part-preview>
+    <customer-profile inline-template :states="states" :visible="visible" v-if="states.customer_profile_view.active"
+                      class="customer-profile">
+        <div class="container page" id="customer-profile-screen">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden vr-stylish-text">{{tr("User Profile")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-hidden" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/accenture_white.png"/>
+                        <img class="hidden acc-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('User Profile')}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                        {{states.customer_profile_view.active_customer.firstname}}
+                                        {{states.customer_profile_view.active_customer.lastname}}
+                        </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="states.customer_fitting_view.best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{states.customer_fitting_view.best_size.RIGHT_FOOT.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(states.customer_fitting_view
+                                      .best_size.score)">{{states.customer_fitting_view.best_size.RIGHT_FOOT.score}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="best-fit main" style="" v-if="states.customer_profile_view.active_customer.id">
+                <div class="user_profile_params vr-user_profile_params ac-user_profile_params acc-user_profile_params stgallen-user_profile_params">
+                    <div class="hidden title ac-block-title vr-block-title acc-block-title">{{tr('Name')}}:{{states.customer_profile_view.active_customer.firstname}} {{states.customer_profile_view.active_customer.lastname}}</div>
+                    <div class="user_info">
+                        <div class="hidden vr-show stgallen-show user_info_line username_profile">{{tr('Name')}}:
+                            <span id="user_profile_name">
+                                        {{getUserName()}}
+                                    </span>
+                        </div>
+                        <div class="info-section">
+                            <div class="user-info-section">
+                                <div class="user_info_line">
+                                    {{tr('Gender')}}:
+                                    <span id="user_profile_sex">
+                                    {{tr('gender_' + states.customer_profile_view.active_customer.gender)}}
+                                </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Size')}}:
+                                    <span id="user_profile_size">
+                                            {{states.customer_profile_view.active_customer.size}}
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Email')}}:
+                                    <span id="user_profile_email">
+                                            {{states.customer_profile_view.active_customer.email}}
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Phone')}}:
+                                    <span id="user_profile_phone">
+                                            {{states.customer_profile_view.active_customer.addresses[0].telephone}}
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Delivery address')}}:
+                                    <span id="user_profile_address">
+                                            {{states.customer_profile_view.active_customer.addresses[0].city}}
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    Notes:
+                                    <span>
+                                        {{states.customer_profile_view.active_customer.note}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="scan-section" v-if="states.customer_profile_view.active_scan">
+                                <div class="user_info_line">
+                                    {{tr('Current Scan ID')}}:
+                                    <span>
+                                        {{states.customer_profile_view.active_scan.scan_id}}
+                                    </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Scanning Date Time')}}:
+                                    <span>
+                                        {{states.customer_profile_view.active_scan.created_date}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total_user_profile">
+                        <table id="user_profile_table">
+                            <tbody>
+                            <tr>
+                                <th>{{tr('Measure')}}</th>
+                                <th>{{tr('Left Foot')}}</th>
+                                <th>{{tr('Right Foot')}}</th>
+                            </tr>
+                            <tr v-for="metric in states.customer_profile_view.mtm.metrics">
+                                <td>{{tr(metric.name)}}</td>
+                                <td v-for="value in metric.values">{{tr(value.value)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  <!-- ./user-info end -->
+                <div class="user_profile_params">
+                    <div class="your-scans_profile ac-your-scans_profile acc-your-scans_profile stgallen-your-scans_profile vr-your-scans_profile">
+                        <div class="title ac-block-title vr-block-title acc-block-title stgallen-block-title">Your Scans</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </customer-profile>
+    <customer-edit-profile inline-template :visible="visible" :states="states"
+                           v-if="states.customer_edit_profile_view.active">
+        <div class="remote-configuration page" id="customer-edit-profile-screen">
+            <div class="header vr-header mainscreen-header">
+                <div class="col header-col header-start">
+                            <span class="back-to">
+                                <a>{{getCollectionName()}}</a>
+                            </span>
+                </div>
+                <div class="col header-col header-middle">
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                    {{states.customer_profile_view.active_customer.firstname}}
+                                    {{states.customer_profile_view.active_customer.lastname}}
+                                </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                                    <span v-if="getFittingValues().best_size != null">{{tr('Best size')}}<
+                                        <span id="rec-size">
+                                            {{getFittingValues().best_size.size}}:{{getFittingValues().best_size.score}}
+                                        </span>
+                                    </span>
+                            <span v-if="getFittingValues().best_style != null">{{tr('Best style')}}
+                                        <span id="fitting-factor"
+                                              :class="getFittingClass(getFittingValues().best_size.score)">
+                                            {{getFittingValues().best_style.size}}:{{getFittingValues().best_style.score}}
+                                        </span>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="main-start">
+                    <div class="price-block">
+                        <div class="collection-summary">Flat</div>
+                        <div class="shoe-block">
+                            <div class="shoe"></div>
+                        </div>
+                        <div class="summary-block">
+                            <div class="heel-material-summary"></div>
+                            <div class="heel-color-summary"></div>
+                            <div class="accessories-summary"></div>
+                        </div>
+                        <div class="prices">
+                            <div class="price">
+                                <p class="base-mod-price">{{tr('Base model')}}: <span class="price-span">0,00 &#8364; </span></p>
+                                <p class="extra-acc-price">{{tr('Extra accessories')}}: <span class="price-span"><span
+                                        class="euro"></span>0,00 &#8364;</span></p>
+                                <p class="extra-mat-price">{{tr('Extra materials')}}: <span class="price-span"><span
+                                        class="euro"></span>0,00 &#8364;</span></p>
+                                <div class="total-price">0,00 &#8364;</div>
+                            </div>
+                            <div class="delivery-time">
+                                <div class="days"><span>21</span></div>
+                                <div class="delivery"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-middle">
+
+                </div>
+                <div class="main-end">
+                    <div class="else-shoes"></div>
+                </div>
+            </div>
+        </div>
+    </customer-edit-profile>
+    <customer-login inline-template :visible="visible" :states="states" v-if="states.customer_login_view.active">
+        <div class="container page" id="customer-login-screen">
+            <header class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden acc-hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden vr-stylish-text">{{tr("User Profile")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden ac-show acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('User Profile')}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                        {{states.customer_profile_view.active_customer.firstname}}
+                                        {{states.customer_profile_view.active_customer.lastname}}
+                        </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(states.customer_fitting_view.best_size.score)">{{states.customer_fitting_view.best_size.score}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </header>
+            <div class="best-fit main" style="">
+                <div class="user_profile_params vr-user_profile_params ac-user_profile_params acc-user_profile_params stgallen-user_profile_params">
+                    <div class="hidden title ac-block-title vr-block-title acc-block-title">{{tr('Name')}}:{{states.customer_profile_view.active_customer.firstname}} {{states.customer_profile_view.active_customer.lastname}}</div>
+                    <div class="user_info">
+                        <div class="hidden vr-show stgallen-show user_info_line username_profile">{{tr('Name')}}:
+                            <span id="user_profile_name">
+                                        {{getUserName()}}
+                                    </span>
+                        </div>
+                        <div class="info-section">
+                            <div class="user-info-section">
+                                <div class="user_info_line">
+                                    {{tr('Gender')}}:
+                                    <span id="user_profile_sex">
+                                        -
+                                </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Size')}}:
+                                    <span id="user_profile_size">
+                                            -
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Email')}}:
+                                    <span id="user_profile_email">
+                                            -
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Phone')}}:
+                                    <span id="user_profile_phone">
+                                            -
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Delivery address')}}:
+                                    <span class="acc-hidden" id="user_profile_address">
+                                            -
+                                        </span>
+                                </div>
+                                <div class="user_info_line">
+                                    Notes:
+                                    <span>
+                                        -
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="scan-section" v-if="states.customer_profile_view.active_scan">
+                                <div class="user_info_line">
+                                    {{tr('Current Scan ID')}}:
+                                    <span>
+                                        {{states.customer_profile_view.active_scan.scan_id}}
+                                    </span>
+                                </div>
+                                <div class="user_info_line">
+                                    {{tr('Scanning Date Time')}}:
+                                    <span>
+                                        {{states.customer_profile_view.active_scan.created_date}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total_user_profile">
+                        <table id="user_profile_table">
+                            <tbody>
+                            <tr>
+                                <th>{{tr('Measure')}}</th>
+                                <th>{{tr('Left Foot')}}</th>
+                                <th>{{tr('Right Foot')}}</th>
+                            </tr>
+                            <tr>
+                                <td>Foot Length (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Position of 1st Metatarsal head (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Instep Girth (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Position of 5th Metatarsal head (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Instep to heel Girth (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Position (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Heel Width (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Angle (degrees)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Girth (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Medial Ball Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lateral Ball Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Toes Position (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Width (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Toes Angle (degrees)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Instep Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Toes Girth (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Instep Width (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Toes Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Navicular Position (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Toes Width (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Navicular Height (mm)</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <!-- <tr v-for="metric in states.customer_profile_view.mtm.metrics">
+                                <td>{{tr(metric.name)}}</td>
+                                <td v-for="value in metric.values">{{tr(value.value)}}</td>
+                            </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  <!-- ./user-info end -->
+                <div class="user_profile_params">
+                    <div class="your-scans_profile ac-your-scans_profile acc-your-scans_profile stgallen-your-scans_profile vr-your-scans_profile">
+                        <div class="title ac-block-title vr-block-title acc-block-title stgallen-block-title">Your Scans</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </customer-login>
+    <customer-order v-if="states.customer_order_view.active" id="customer-order-screen" :visible="visible"
+                    :states="states" :configurator="configuration" :preview_image="preview_image" inline-template>
+        <div class="content mainscreen-app page" id="customer-order-screen">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden screen-name vr-stylish-text">{{tr("Order")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                       <!-- <img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                        <span class="stgallen-title">
+                            <span class="hidden stgallen-show">{{tr('Order')}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                    {{states.customer_profile_view.active_customer.firstname}}
+                                    {{states.customer_profile_view.active_customer.lastname}}
+                        </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="getFittingValues().best_size != null">
+                                        <span id="rec-size" class="fitting-size">
+                                            {{getFittingValues().best_size.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">{{getFittingValues().best_size.score}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                 <div class="order-button-block">
+                    <form>
+                        <div class="input-label">
+                            <label class="label">{{tr("Full Name")}}</label>
+                            <input type="text" v-model.trim="states.customer_order_view.customer_info.firstname" @input="updateData" name="firstname" placeholder="Customer Name" style="flex: 2 1 50px; margin-right: 5px;">
+                            <input type="text" v-model.trim="states.customer_order_view.customer_info.lastname" @input="updateData" name="lastname" placeholder="Customer Surname" style="flex: 1 1 50px;">
+                        </div>
+                        <div class="input-label">
+                            <label for="email-order" class="label">{{tr("Email")}}</label>
+                            <input type="email" v-model.trim="states.customer_order_view.customer_info.email" placeholder="Customer Email" @input="updateData" name="email" id="email-order">
+                        </div>
+                        <div class="input-label">
+                            <label for="size" class="label">{{tr("Standard Size")}}</label>
+                            <select name="size" id="size" placeholder="Choose your optimum size" v-model.lazy="states.customer_order_view.customer_info.size" @change="updateData">
+                                <option value="34">{{tr("Size 34")}}</option>
+                                <option value="34.5">{{tr("Size 34.5")}}</option>
+                                <option value="35">{{tr("Size 35")}}</option>
+                                <option value="35.5">{{tr("Size 35.5")}}</option>
+                                <option value="36">{{tr("Size 36")}}</option>
+                                <option value="36.5">{{tr("Size 36.5")}}</option>
+                                <option value="37" selected="selected">{{tr("Size 37")}}</option>
+                                <option value="37.5">{{tr("Size 37.5")}}</option>
+                                <option value="38">{{tr("Size 38")}}</option>
+                                <option value="38.5">{{tr("Size 38.5")}}</option>
+                                <option value="39">{{tr("Size 39")}}</option>
+                                <option value="39.5">{{tr("Size 39.5")}}</option>
+                                <option value="40">{{tr("Size 40")}}</option>
+                                <option value="40.5">{{tr("Size 40.5")}}</option>
+                                <option value="41">{{tr("Size 41")}}</option>
+                                <option value="41.5">{{tr("Size 41.5")}}</option>
+                                <option value="42">{{tr("Size 42")}}</option>
+                                <option value="42.5">{{tr("Size 42.5")}}</option>
+                                <option value="43">{{tr('Size')}} 43</option>
+                                <option value="43.5">{{tr('Size')}} 43.5</option>
+                                <option value="44">{{tr('Size')}} 44</option>
+                                <option value="44.5">{{tr('Size')}} 44.5</option>
+                                <option value="45">{{tr('Size')}} 45</option>
+                                <option value="45.5">{{tr('Size')}} 45.5</option>
+                                <option value="46">{{tr('Size')}} 46</option>
+                                <option value="46.5">{{tr('Size')}} 46.5</option>
+                                <option value="47">{{tr('Size')}} 47</option>
+
+                            </select>
+                            <a class="dropdown-btn"></a>
+                        </div>
+                        <div class="input-label">
+                            <label for="fitted_size" class="label">{{tr("Fitted Size")}}</label>
+                            <select name="size" id="fitted_size" placeholder="Fitted size" v-model.lazy="states.customer_order_view.customer_info.fitted_size" @change="updateData">
+                                <option value="34">{{tr("Size 34")}}</option>
+                                <option value="34.5">{{tr("Size 34.5")}}</option>
+                                <option value="35">{{tr("Size 35")}}</option>
+                                <option value="35.5">{{tr("Size 35.5")}}</option>
+                                <option value="36">{{tr("Size 36")}}</option>
+                                <option value="36.5">{{tr("Size 36.5")}}</option>
+                                <option value="37" selected="selected">{{tr("Size 37")}}</option>
+                                <option value="37.5">{{tr("Size 37.5")}}</option>
+                                <option value="38">{{tr("Size 38")}}</option>
+                                <option value="38.5">{{tr("Size 38.5")}}</option>
+                                <option value="39">{{tr("Size 39")}}</option>
+                                <option value="39.5">{{tr("Size 39.5")}}</option>
+                                <option value="40">{{tr("Size 40")}}</option>
+                                <option value="40.5">{{tr("Size 40.5")}}</option>
+                                <option value="41">{{tr("Size 41")}}</option>
+                                <option value="41.5">{{tr("Size 41.5")}}</option>
+                                <option value="42">{{tr("Size 42")}}</option>
+                                <option value="42.5">{{tr("Size 42.5")}}</option>
+                                <option value="43">{{tr('Size')}} 43</option>
+                                <option value="43.5">{{tr('Size')}} 43.5</option>
+                                <option value="44">{{tr('Size')}} 44</option>
+                                <option value="44.5">{{tr('Size')}} 44.5</option>
+                                <option value="45">{{tr('Size')}} 45</option>
+                                <option value="45.5">{{tr('Size')}} 45.5</option>
+                                <option value="46">{{tr('Size')}} 46</option>
+                                <option value="46.5">{{tr('Size')}} 46.5</option>
+                                <option value="47">{{tr('Size')}} 47</option>
+
+                            </select>
+                            <a class="dropdown-btn"></a>
+                            </div>
+                            <div class="input-label">
+                                <label class="label">{{tr("Delivery address")}}</label>
+                                    <input type="text" v-model.trim="states.customer_order_view.customer_info.addresses[0].street[0]" @input="updateData" id="district" placeholder="District of the shop" style="flex: 2 1 50px; margin-right: 5px;">
+                                    <input type="text" v-model.trim="states.customer_order_view.customer_info.addresses[0].city" @input="updateData" name="city" id="city" placeholder="City" style="flex: 1 1 50px;">
+                                <div style="display: flex; flex-direction: row; margin-left: 30%;">
+                                    <input type="text" v-model.trim="states.customer_order_view.customer_info.addresses[0].countryId" @input="updateData" name="country" id="country" placeholder="Country" style="flex: 2 1 100px; width: 100%; margin-left: 30px; margin-top: 5px">
+                                    <input type="number" v-model.trim="states.customer_order_view.customer_info.addresses[0].postcode" @input="updateData" name="zip-code" id="zip-code" placeholder="Zip Code" style="flex: 1 1 150px; width: 100%; margin-top: 5px">
+                                </div>
+                            </div>
+                            <div class="input-label">
+                                <label for="phone" class="label">{{tr("Phone number")}}</label>
+                                <input type="tel" placeholder="Format: (45) 123-456-7890 " v-model.trim="states.customer_order_view.customer_info.addresses[0].telephone" @input="updateData" name="phone" id="phone">
+                            </div>
+                            <div class="input-label">
+                                <label for="payment-type" class="label">{{tr("Payment type")}}</label>
+                                <select size="1" name="payment-type" id="payment-type" v-model.lazy="states.customer_order_view.customer_info.payment_type" @change="updateData">
+                                    <option value="cash" selected="selected">{{tr("Cash")}}</option>
+                                    <option value="creditCard">{{tr("Credit Card")}}</option>
+                                    <option value="debitCard">{{tr("Debit Card")}}</option>
+                                    <option value="other">{{tr("Other")}}</option></select>
+                                <a class="dropdown-btn"></a>
+                            </div>
+                            <div class="input-label">
+                                <label for="notes" class="label">{{tr("Notes")}}</label>
+                                <input type="text" name="notes" id="notes" v-model.trim="states.customer_order_view.customer_info.note" @input="updateData">
+                            </div>
+                            <div class="order-button"></div>
+                    </form>
+                    <!-- <div class="button share-conf">
+                        <img src="../img/share.png">
+                        {{tr("Share this configuration")}}
+                    </div> -->
+                    <!--<div class="btn-order" @click="sendOrder">{{tr("Order Now")}}</div>-->
+
+                <div class="button-container">
+                    <button class="do-order-button" @click="sendOrder">{{tr('Order Now')}}</button>
+                </div>
+                </div>
+                <div class="summary-footer">
+                    <div class="product-summary">{{tr("Your current configuration")}} -</div>
+                    <div class="collection-summary">{{tr("Model")}}: {{tr(states.product_view.active_product.name)}}</div>
+                    <div class="heel-color-summary" v-if="states.product_view.active_color">
+                        {{tr("Color")}}: {{getColorName(states.product_view.active_color)}}
+                    </div>
+                    <div class="heel-material-summary" v-if="states.product_view.active_material">
+                        {{tr("Mat")}}: {{getMaterialName(states.product_view.active_material)}}
+                    </div>
+                </div>
+            </div>
+            <div v-show="visible.order_success" id="order-success-push" @click="goHomeAfterSuccess()">
+                {{tr('Your order has been successfully completed')}}
+            </div>
+                 <!--<div class="button-container" v-show="visible.order_success" id="order-success-push">-->
+                    <!--<button class="continue-to-configurator" @click="continueAction">{{tr('Your order has been successfully completed')}}</button>-->
+                <!--</div>-->
+            <!--<div class="diy"><span>Ask ELSA</span></div>-->
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+        </div>
+    </customer-order>
+    <!-- <notification-messages inline-template v-if="notification_messages.show_notify"
+                           id="notification-messages"
+                           :notification_messages="notification_messages">
+        <div id="notification-messages" class="container"
+             style="position: absolute; margin: 0; width:300px; background: #f4f5f4; top: 20px; left: 40%; z-index: 9999999;">
+            <label class="label"> {{tr(notification_messages.message)}}</label>
+            <button @click="closeNotify()">{{tr('Ok')}}</button>
+        </div>
+    </notification-messages> -->
+    <customer-fitting v-if="states.customer_fitting_view.active"
+                      class="customer-fitting"
+                      id="customer-fitting-screen"
+                      :visible="visible"
+                      :states="states"
+                      :configurator="configuration"
+                      :preview_image="preview_image"
+                      :state="states.customer_fitting_view"
+                      inline-template>
+        <div class="container page" id="customer-fitting-screen">
+            <div class="header vr-header acc-header stgallen-header mainscreen-header">
+                <div class="col header-col header-start">
+                    <div class="logo header-logo">
+                        <img class="hidden apparel-show micam-show vr-show vr-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/neon-logo.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/chromium_else.png">
+                        <img class="hidden ac-show acc-hidden ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img class="hidden stgallen-show" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/logo-else-corp.png"/>-->
+                        <img class="hidden stgallen-show logo-chromium" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/chromium_else.png"/>
+                        <img class="hidden stgallen-show h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/st-gallen/st_gallen_logo.png"/>
+                    </div>
+
+                </div>
+                <div class="col header-col header-middle">
+                    <span class="stgallen-hidden acc-hidden screen-name vr-stylish-text">{{tr("Virtual Fitting")}}</span>
+                    <div class="logo header-logo">
+                        <img class="hidden ac-show logo-altroconsumo h-40per" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/logo-altroconsumo.png"/>
+                        <img class="hidden acc-show ac-logo-img" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo-transparent-white.png">
+                        <!--<img id="mcpc_sm" class="" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/logo_mcpc.png"/> -->
+                    </div>
+                </div>
+                <div class="col header-col header-end">
+                    <div class="login vr-login ac-login acc-login stgallen-login" v-if="states.customer_profile_view.active_customer.id">
+                        <div class="go-account"></div>
+                        <span class="user_name">
+                                        {{states.customer_profile_view.active_customer.firstname}}
+                                        {{states.customer_profile_view.active_customer.lastname}}
+                                    </span>
+                        <div class="account_info" v-if="getFittingValues().best_style || getFittingValues().best_size">
+                            <div class="size-block-header" v-if="states.customer_fitting_view.active_comparision">
+                                         <span id="rec-size" class="fitting-size">
+                                            {{states.customer_fitting_view.best_size.RIGHT_FOOT.size}}
+                                        </span>
+                                <span class="factor-text">fitting factor</span>
+                                <span class="factor-score"
+                                      :class="getFittingClass(states.customer_fitting_view
+                                      .best_size.score)">{{states.customer_fitting_view.best_size.RIGHT_FOOT.score}}</span>
+                            </div>
+                            <!-- <span v-if="getFittingValues().best_style != null">{{tr('Best style')}}
+                                <span id="fitting-factor"
+                                      :class="getFittingClass(getFittingValues().best_size.score)">
+                                    {{getFittingValues().best_style.size}}:{{getFittingValues().best_style.score}}
+                                </span>
+                            </span> -->
+                        </div>
+                    </div>
+                    <div class="logo header-logo">
+                        <!-- <img class="acc-hidden logo-pwd-else" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/Powered_by_ELSE_transparent.gif"/> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main best-fit" style="" v-if="states.customer_profile_view.active_customer.id">
+                <div class="user_profile_params">
+                    <div class="user_info bcgd-elsa">
+                        <div class="user_info_line username_profile">{{tr('Name')}}:
+                            <span id="user_profile_name">
+                                        {{states.customer_profile_view.active_customer.firstname}}
+                                    </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Gender')}}:
+                            <span id="user_profile_sex">
+                                {{tr('gender_' + states.customer_profile_view.active_customer.gender)}}
+                            </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Standard Size')}}:
+                            <span id="user_profile_size">
+                                        {{states.customer_profile_view.active_customer.size}}
+                                    </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Email')}}:
+                            <span id="user_profile_email">
+                                        {{states.customer_profile_view.active_customer.email}}
+                                    </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Phone')}}:
+                            <span id="user_profile_phone">
+                                        {{states.customer_profile_view.active_customer.addresses[0].telephone}}
+                                    </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Delivery address')}}:
+                            <span id="user_profile_address">
+                                        {{states.customer_profile_view.active_customer.addresses[0].city}}
+                                    </span>
+                        </div>
+                        <div class="user_info_line">
+                            {{tr('Notes')}}:
+                            <span id="user_profile_notes">
+                                {{states.customer_profile_view.active_customer.note}}
+                            </span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- <div class="comparision_differences" v-if="states.customer_fitting_view.active_comparision">
+                        <li class="comparision_differences_for_left" v-if="states.customer_fitting_view.active_comparision.output_differences.left">
+                            <ul v-for="diff in states.customer_fitting_view.active_comparision.output_differences.left">
+                                <span class="metric_name">{{tr(diff.name)}}</span>
+                                <div class="difference_values">
+                                    <span v-for="value in diff.difference">{{value}}</span>
+                                </div>
+                            </ul>
+                        </li>
+                        </li>
+                        <li class="comparision_differences_for_right" v-if="states.customer_fitting_view.active_comparision.output_differences.right">
+                            <ul v-for="diff in states.customer_fitting_view.active_comparision.output_differences.right">
+                                <span class="metric_name">{{tr(diff.name)}}</span>
+                                <div class="difference_values">
+                                    <span v-for="value in diff.difference">{{value}}</span>
+                                </div>
+                            </ul>
+                        </li>
+                    </div> -->
+
+                    <div class="user_info">
+
+                        <div class="username_profile user_info_line">User scans</div>
+                        <div class="scans_elsa">
+                            <div>
+                                <div class="user_scans" v-if="states.customer_profile_view.mtm.scan_image">
+
+                                    <div class="left_scan">
+                                        <img id="left_scan_image" style="height: 250px"
+                                             :src="states.customer_profile_view.mtm.scan_image.LEFT_FOOT">
+                                    </div>
+                                    <div class="right_scan">
+                                        <img id="right_scan_image" style="height: 250px"
+                                             :src="states.customer_profile_view.mtm.scan_image.RIGHT_FOOT">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="elsa">
+                                <img src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/ELSA.png">
+                                <img class="logo-elsa-neon" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/elsa-small.png"/>
+                                <img class="logo-elsa-ac" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/altroconsumo/elsa.png"/>
+                            </div> -->
+                        </div>
+                        <div class="scan-section" v-if="states.customer_profile_view.active_scan">
+                            <div class="user_info_line">
+                                {{tr('Current Scan ID')}}:
+                                <span>
+                                            {{states.customer_profile_view.active_scan.scan_id}}
+                                        </span>
+                            </div>
+                            <div class="user_info_line">
+                                {{tr('Scanning Date Time')}}:
+                                <span>
+                                            {{states.customer_profile_view.active_scan.created_date}}
+                                        </span>
+                            </div>
+                        </div>
+                    </div> <!-- ./user-info end -->
+                </div>
+                <div class="block-virtual-fitting">
+                    <div class="product_info">
+                        <div class="fitting-name">Virtual Fitting</div>
+                        <!-- <div class="product_name">{{tr(states.product_view.active_product.name)}}</div> -->
+                        <div class="best_sizes"
+                             v-if="states.customer_fitting_view.order_mapping">
+                            <div class="prev_best_size"
+                                 v-if="states.customer_fitting_view.order_mapping.previous">
+                                <div>-0.5&lt</div>
+                            </div>
+                            <div class="next_best_size"
+                                 v-if="states.customer_fitting_view.order_mapping.next">
+                                <div>&gt+0.5</div>
+                            </div>
+                        </div>
+                        <div class="comparision_size" v-if="states.customer_fitting_view.active_comparision">
+                            <span>{{tr('Fitting size')}}</span>
+                            <span>{{states.customer_fitting_view.best_size.RIGHT_FOOT.size}}</span>
+                        </div>
+                        <div class="comparision_score" v-if="states.customer_fitting_view.active_comparision">
+                            <span>{{tr('Fitting factor')}}</span>
+                            <span class="factor-score"
+                                  :class="getFittingClass(getFittingValues().best_size.score)">{{states.customer_fitting_view.best_size.RIGHT_FOOT.score}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="http://console.sm.mystyle.cloud/static/configurator-block vr-configurator-block ac-configurator-block diff-prices-container">
+                    <div class="vr-model-name title vr-block-title ac-block-title stgallen-block-title"><span>{{tr(states.product_view.active_product.name)}}</span></div>
+                    <div class="product-preview vr-product-preview ac-product-preview">
+                        <img class="live-image" :src="preview_image">
+                    </div>
+                    <div class="summary-block">
+                        <div class="material-summary">{{tr("Material")}}: <span>Suede</span></div>
+                        <div class="color-summary">{{tr("Color")}}: <span>Signal Red</span></div>
+                        <div class="accessories-summary"></div>
+                    </div>
+                    <div class="prices" v-if="states.product_view.current_configuration_price">
+                        <div class="price">
+                            <p class="base-mod-price">
+                                {{tr("Base model")}}: <span
+                                    class="price-span">{{states.product_view.current_configuration_price.base}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-acc-price"  v-for="value, name in states.product_view.current_configuration_price.details">
+                                {{tr(name)}}: <span class="price-span">{{tr(value)}},00 &#8364;
+                                    </span>
+                            </p>
+                            <p class="extra-mat-price">
+                                {{tr("Extra materials")}}: <span class="price-span">0,00 &#8364;
+                                    </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-time">
+                    <div class="delivery"></div>
+                    <div class="total-price" v-if="states.product_view.current_configuration_price">
+                        {{states.product_view.current_configuration_price.total}},00 &#8364;
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <img class="hidden acc-show poweredby-accenture" src="http://console.sm.mystyle.cloud/static/configurator/mainscreen/img/accenture/Powered_by_logos.png">
+            </div>
+
+        </div>
+    </customer-fitting>
+    <material-library v-if="states.material_library_view.active" id="material-library-screen">
+        <div id="material-library-screen"></div>
+    </material-library>
+           <!--<div class="http://console.sm.mystyle.cloud/static/configurator-item go-order" @click="order">-->
+                        <!--<span class="order-icon"></span>-->
+                        <!--<span class="text">{{tr("Order")}}</span>-->
+                    <!--</div>-->
+</div>
+<script defer src="http://console.sm.mystyle.cloud/static/configurator/mainscreen.bundle.js"></script>
+<script id="brandUUID" value="${brandId}"></script>
+<script id="collectionId" value="${collectionId}"></script>
+<script id="modelId" value="${modelId}"></script>
+<script id="initialConfigurationId" value="${initialConfigurationId}"></script>
+<script>
+    window.collectionUUID = '${collectionId}';
+    window.productUUID = '${modelId}';
+    window.configurationUUID = '${initialConfigurationId}';
+    window.configuration = ${configuration};
+</script>
+<script defer src="https://elsejssdkstor.blob.core.windows.net/demo/else.js.client.sdk/0.2.0/js/else.js.client.sdk.js"></script>
+<script defer src="https://elseuijssdkstor.blob.core.windows.net/demo/else.js.ui.sdk/0.2.0/mainscreen-ui-sdk.js"></script>
+<script defer src="http://console.sm.mystyle.cloud/static/configurator/patchedSdk.js"></script>
+<div id="canvas_container_id"></div>
+</body>
+</html>
