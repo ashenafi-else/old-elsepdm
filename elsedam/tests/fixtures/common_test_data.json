@@ -1,0 +1,173 @@
+[
+  {
+    "model": "elsedam.brand",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd0",
+    "fields": {
+      "brand_external_id": "1",
+      "is_default": true,
+      "updated": "2018-10-17 14:27:26.526088+00:00"
+    }
+  },
+  {
+    "model": "elsedam.brand",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd1",
+    "fields": {
+      "brand_external_id": "2",
+      "is_default": false,
+      "updated": "2018-10-17 14:27:26.526088+00:00"
+    }
+  },
+  {
+    "model": "elsedam.storage",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd2",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage_type": "private",
+      "brand": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd0",
+      "domain": "https://test.private.domain",
+      "model_type": "azurestorage"
+    }
+  },
+  {
+    "model": "elsedam.azurestorage",
+    "fields": {
+      "storage_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd2",
+      "account_name": "elsedamstorage",
+      "account_key": "testtest",
+      "container": "private",
+      "storage_timeout": 0
+    }
+  },
+  {
+    "model": "elsedam.storage",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd3",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage_type": "public",
+      "brand": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd1",
+      "domain": "https://test.public.domain",
+      "model_type": "azurestorage"
+    }
+  },
+  {
+    "model": "elsedam.azurestorage",
+    "fields": {
+      "storage_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd3",
+      "account_name": "elsedamstorage",
+      "account_key": "testtest",
+      "container": "public",
+      "storage_timeout": 0
+    }
+  },
+  {
+    "model": "elsedam.storage",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd4",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage_type": "buffered",
+      "brand": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd0",
+      "domain": "https://test.buffered.domain",
+      "model_type": "azurestorage"
+    }
+  },
+  {
+    "model": "elsedam.azurestorage",
+    "fields": {
+      "storage_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd4",
+      "account_name": "elsedamstorage",
+      "account_key": "testtest",
+      "container": "buffered",
+      "storage_timeout": 0
+    }
+  },
+  {
+    "model": "elsedam.storagelocation",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc1",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd2",
+      "path": "private_azure_location",
+      "model_type":"azurestoragelocation"
+    }
+  },
+  {
+    "model": "elsedam.azurestoragelocation",
+    "fields": {
+      "storagelocation_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc1",
+      "container": "private"
+    }
+  },
+  {
+    "model": "elsedam.storagelocation",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd3",
+      "path": "public_azure_location",
+      "model_type":"azurestoragelocation"
+    }
+  },
+  {
+    "model": "elsedam.azurestoragelocation",
+    "fields": {
+      "storagelocation_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+      "container": "public"
+    }
+  },
+  {
+    "model": "elsedam.storagelocation",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc3",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "storage": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fd4",
+      "path": "buffer_azure_location",
+      "model_type":"azurestoragelocation"
+    }
+  },
+  {
+    "model": "elsedam.azurestoragelocation",
+    "fields": {
+      "storagelocation_ptr_id": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc3",
+      "container": "buffered"
+    }
+  },
+  {
+    "model": "elsedam.storagegroup",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fa1",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "file_extensions": ["json", "png", "jpg"],
+      "mime_types": ["application/json"],
+      "name": "privategroup",
+      "location":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fc1",
+      "brand":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fd0",
+      "tags":["e", "f"]
+    }
+  },
+  {
+    "model": "elsedam.storagegroup",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fa2",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "file_extensions": ["json", "png", "jpg"],
+      "mime_types": ["application/json"],
+      "name": "publicgroup",
+      "location":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+      "brand":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fd1",
+      "tags":["a", "c", "b"]
+    }
+  },
+  {
+    "model": "elsedam.storagegroup",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fa3",
+    "fields": {
+      "updated": "2018-10-17 14:27:26.526088+00:00",
+      "file_extensions": ["json", "png", "jpg"],
+      "mime_types": ["application/json"],
+      "name": "buffergroup",
+      "location":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fc3",
+      "brand":"642bbbe6-d21b-11e8-a8d5-f2801f1b9fd0",
+      "tags":["e", "f"]
+    }
+  }
+]

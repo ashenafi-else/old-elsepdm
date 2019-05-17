@@ -1,0 +1,35 @@
+[
+  {
+    "model": "elsedam.buffereddamasset",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1bbda0",
+    "fields": {
+      "dam_asset": "642bbbe6-d21b-11e8-a8d5-f2801f1b9da0",
+      "buffer_url": "url",
+      "for_removing": true,
+      "location": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+      "updated": "2018-10-17 14:27:26.526088+00:00"
+    }
+  },
+  {
+    "model": "elsedam.buffereddamasset",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1bbda1",
+    "fields": {
+      "dam_asset": "642bbbe6-d21b-11e8-a8d5-f2801f1b9da1",
+      "buffer_url": "url",
+      "for_removing": true,
+      "location": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+      "updated": "2018-10-17 14:27:26.526088+00:00"
+    }
+  },
+  {
+    "model": "elsedam.buffereddamasset",
+    "pk": "642bbbe6-d21b-11e8-a8d5-f2801f1bbda2",
+    "fields": {
+      "dam_asset": "642bbbe6-d21b-11e8-a8d5-f2801f1b9da2",
+      "buffer_url": "url",
+      "for_removing": true,
+      "location": "642bbbe6-d21b-11e8-a8d5-f2801f1b9fc2",
+      "updated": "2018-10-17 14:27:26.526088+00:00"
+    }
+  }
+]
