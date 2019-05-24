@@ -31,7 +31,11 @@ class Material(Base):
     name = models.CharField(max_length=64)
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     external_id = models.CharField(max_length=64)
-
+    available_colors = models.ForeignKey(
+        'elsecmh.Color',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
 
 class ProductHierarchy(MP_Node, Base):
     name = models.CharField(max_length=64)
