@@ -26,7 +26,6 @@ class Collection(Base):
         related_name='collections',
     )
 
-
 class ColorGroup(MP_Node, Base):
     name = models.CharField(max_length=64)
     node_order_by = ['name']
@@ -48,7 +47,6 @@ class Color(Base):
         null=True,
         blank=True,
     )
-
 
 class Material(Base):
     name = models.CharField(max_length=64)
@@ -231,7 +229,11 @@ class ConfigurationElement(Base):
         Configuration,
         on_delete=models.CASCADE,
         related_name='configuration_elements')
-    material = models.CharField(max_length=64)
+    material = models.ForeignKey(
+        Material,
+        related_name='active_material',
+        on_delete=models.CASCADE,
+    )
     color = models.CharField(max_length=64)
 
 
