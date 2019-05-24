@@ -27,15 +27,39 @@ class Collection(Base):
     )
 
 
+class ColorGroup(MP_Node, Base):
+    name = models.CharField(max_length=64)
+    node_order_by = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class Color(Base):
+    name = models.CharField(max_length=64)
+    color_group = models.ForeignKey(
+        ColorGroup,
+        on_delete=models.CASCADE,
+        related_name='colors',
+    )
+    color_space = models.CharField(max_length=64)
+    value = models.CharField(max_length=225)
+    description = models.TextField(
+        null=True,
+        blank=True,
+    )
+
+
 class Material(Base):
     name = models.CharField(max_length=64)
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     external_id = models.CharField(max_length=64)
     available_colors = models.ForeignKey(
-        'elsecmh.Color',
+        Color,
         on_delete=models.SET_NULL,
         null=True,
     )
+
 
 class ProductHierarchy(MP_Node, Base):
     name = models.CharField(max_length=64)
@@ -43,7 +67,6 @@ class ProductHierarchy(MP_Node, Base):
 
 
 class ShoePairSettings(Base):
-
     AXIS_XYZ = 'xyz'
     AXIS_XZY = 'xzy'
     AXIS_YXZ = 'yxz'
@@ -134,7 +157,7 @@ class ProductRevision(Base):
         return self.product.revisions.count()
 
     class Meta:
-        ordering = ('-created', )
+        ordering = ('-created',)
 
 
 class ProductComponent(Base):
