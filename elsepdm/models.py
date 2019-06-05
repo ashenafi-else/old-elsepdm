@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from elsepublic.models import (
     Base,
@@ -31,6 +33,15 @@ class Material(Base):
     name = models.CharField(max_length=64)
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     external_id = models.CharField(max_length=64)
+    colors_uuids = ArrayField(
+        models.UUIDField(
+            default=uuid.uuid4,
+            editable=False,
+            unique=True,
+            primary_key=True
+        ),
+        default=list,
+    )
 
 
 class ProductHierarchy(MP_Node, Base):
@@ -39,7 +50,6 @@ class ProductHierarchy(MP_Node, Base):
 
 
 class ShoePairSettings(Base):
-
     AXIS_XYZ = 'xyz'
     AXIS_XZY = 'xzy'
     AXIS_YXZ = 'yxz'
@@ -130,7 +140,7 @@ class ProductRevision(Base):
         return self.product.revisions.count()
 
     class Meta:
-        ordering = ('-created', )
+        ordering = ('-created',)
 
 
 class ProductComponent(Base):
