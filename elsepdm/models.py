@@ -184,18 +184,26 @@ class ProductElement(Base):
 
 
 class Configuration(Base):
-    CREATED = 'created'
-    RENDERED = 'rendered'
-    PUBLISHED = 'published'
+    NEW = 0
+    UPDATED = 1
+    PREPARING = 2
+    PREPARED = 3
+    PUBLISHING = 4
+    PUBLISHED = 5
 
     STATES = (
-        (CREATED, 'Created'),
-        (RENDERED, 'Rendered'),
+        (NEW, 'New'),
+        (UPDATED, 'Updated'),
+        (PREPARING, 'Preparing'),
+        (PREPARED, 'Prepared'),
+        (PUBLISHING, 'Publishing'),
         (PUBLISHED, 'Published'),
     )
-    state = models.CharField(max_length=64, choices=STATES, default=CREATED)
+    state = models.CharField(max_length=64, choices=STATES, default=NEW)
     product_revision = models.ForeignKey(
-        ProductRevision, on_delete=models.CASCADE)
+        ProductRevision,
+        on_delete=models.CASCADE,
+    )
 
 
 class ConfigurationElement(Base):
